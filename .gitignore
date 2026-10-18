@@ -1,0 +1,27 @@
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+
+# Local editor and operating-system state
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+*.swp
+*.swo
+*~
