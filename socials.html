@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harish Reddy Duggempudi | Social media</title>
+<meta name="description" content="Find Harish Reddy Duggempudi on Instagram, YouTube, LinkedIn and GitHub.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="socials.html">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Harish Reddy Duggempudi | Social media">
+<meta property="og:description" content="Instagram, YouTube, LinkedIn and GitHub in one place.">
+<meta property="og:url" content="socials.html">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/og-image.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+body{background:var(--bg)}
+.top{background:var(--red);position:relative;overflow:hidden;padding:4rem 1.2rem 6rem;text-align:center}
+.top::before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.28) 1.4px,transparent 1.6px) 0 0/14px 14px;opacity:.5}
+.top h1{position:relative;font-size:clamp(3.2rem,11vw,6rem);color:#0a0a0a}
+.top p{position:relative;color:#1f0604;font-weight:500;max-width:34ch;margin:.8rem auto 0}
+.wrap{width:min(900px,100% - 32px);margin:-3.5rem auto 0;position:relative}
+.grid{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.grid li{animation:up .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*90ms + 100ms)}
+.plat{--a:var(--red);--x:50%;--y:50%;display:flex;flex-direction:column;gap:.7rem;height:100%;padding:1.4rem;border:1px solid var(--line);border-radius:26px;background:var(--card);position:relative;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
+.plat::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--a);transform:scaleX(.18);transform-origin:left;transition:transform .35s}
+.plat::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(280px circle at var(--x) var(--y),color-mix(in srgb,var(--a) 26%,transparent),transparent 70%)}
+[data-k=instagram]{--a:#e1306c}[data-k=youtube]{--a:#ff2d2d}[data-k=linkedin]{--a:#2f8fe8}[data-k=github]{--a:#8b5cf6}
+@media(hover:hover){
+.plat:hover{border-color:var(--a);transform:translateY(-4px);box-shadow:0 22px 40px -26px var(--a)}
+.plat:hover::before{transform:scaleX(1)}.plat:hover::after{opacity:1}
+.plat:hover .ic{background:var(--a);color:#fff;border-color:var(--a);transform:rotate(-8deg) scale(1.08)}
+.plat:hover .go span{transform:translate(3px,-3px)}}
+.plat:active{transform:scale(.985)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.ic{width:60px;height:60px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--a);transition:background .25s,color .25s,border-color .25s,transform .25s}
+.ic svg{width:28px;height:28px}
+.hd{color:var(--mute);font-size:.82rem;overflow-wrap:anywhere;text-align:right}
+.plat h2{font-size:3.4rem}
+.plat p{color:var(--mute);font-size:.92rem;flex:1}
+.go{font-weight:600;font-size:.88rem}
+.go span{color:var(--a);display:inline-block;transition:transform .25s}
+.more{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin:2rem 0 0}
+@media(max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}.plat h2{font-size:3rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#grid">Skip to accounts</a>
+<button class="theme" id="theme" type="button" aria-label="Switch theme"></button>
+<header class="top">
+  <h1 class="d">Find me on social media</h1>
+  <p id="bio"></p>
+</header>
+<main class="wrap">
+  <ul class="grid" id="grid" aria-label="Social media accounts"></ul>
+  <noscript><p class="noscript">Please enable JavaScript to see my accounts, or visit <a href="https://www.instagram.com/hey.harish_reddy/">Instagram</a>.</p></noscript>
+  <div class="more">
+    <a class="pill" href="links.html">More links</a>
+    <button class="pill" id="share" type="button">Share this page</button>
+  </div>
+</main>
+<footer>© <span id="yr"></span> <a href="./">Harish Reddy Duggempudi</a></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="links-data.js"></script>
+<script src="common.js"></script>
+<script>
+(function(){
+  const {$,esc,icon,safe,ext}=App;
+  $('#bio').textContent=window.PROFILE.bio;
+  $('#yr').textContent=new Date().getFullYear();
+  $('#grid').innerHTML=window.SOCIALS.map((s,i)=>`<li style="--i:${i}"><a class="plat" data-k="${esc(s.icon)}" href="${esc(safe(s.url))}"${ext(s.url)} aria-label="${esc(s.name)}, ${esc(s.handle)}: ${esc(s.cta||'Visit')}${/^https?:/i.test(s.url)?' (opens in a new tab)':''}"><div class="row"><span class="ic">${icon(s.icon)}</span><span class="hd">${esc(s.handle)}</span></div><h2 class="d">${esc(s.name)}</h2><p>${esc(s.desc||'')}</p><span class="go">${esc(s.cta||'Visit')} <span aria-hidden="true">↗</span></span></a></li>`).join('');
+  App.spotlight('#grid','.plat');App.share(document.querySelector('#share'));App.theme();App.seo('socials.html');
+})();
+</script>
+</body>
+</html>
