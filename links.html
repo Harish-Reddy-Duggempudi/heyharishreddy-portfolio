@@ -31,9 +31,10 @@ h1 span{color:var(--red)}
 .bio{color:var(--mute);max-width:32ch;margin:.7rem auto 0}
 .handle{display:inline-block;margin-top:.9rem;padding:.3rem .9rem;border:1px solid var(--line);border-radius:99px;font-size:.82rem;font-weight:600;background:var(--card)}
 .soc{display:flex;justify-content:center;flex-wrap:wrap;gap:.65rem;margin:1.5rem 0 1.8rem}
-.soc a{width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;transition:transform .2s,background .2s,border-color .2s,color .2s}
+.soc a{--a:var(--red);width:50px;height:50px;border-radius:50%;border:1px solid color-mix(in srgb,var(--a) 35%,var(--line));background:color-mix(in srgb,var(--a) 9%,var(--card));color:var(--a);display:grid;place-items:center;transition:transform .2s,background .2s,border-color .2s,color .2s}
+.soc a[data-k=instagram]{--a:#e1306c}.soc a[data-k=youtube]{--a:#ff2d2d}.soc a[data-k=linkedin]{--a:#2f8fe8}.soc a[data-k=github]{--a:#8b5cf6}.soc a[data-k=facebook]{--a:#1877f2}
 .soc a svg{width:22px;height:22px}
-@media(hover:hover){.soc a:hover{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-4px) rotate(-6deg)}}
+@media(hover:hover){.soc a:hover{background:var(--a);border-color:var(--a);color:#fff;transform:translateY(-4px) rotate(-6deg)}}
 .soc a:active{transform:scale(.94)}
 ul.l{list-style:none;display:flex;flex-direction:column;gap:.8rem;text-align:left}
 ul.l li{animation:up .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms + 150ms)}
@@ -94,7 +95,7 @@ ul.l li{animation:up .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(
   $('#handle').textContent=P.handle;
   $('#photo').src=P.photo;
   $('#yr').textContent=new Date().getFullYear();
-  $('#soc').innerHTML=window.SOCIALS.map(s=>`<a href="${esc(safe(s.url))}"${ext(s.url)} aria-label="${esc(s.name)}${/^https?:/i.test(s.url)?' (opens in a new tab)':''}" title="${esc(s.name)}">${icon(s.icon)}</a>`).join('');
+  $('#soc').innerHTML=window.SOCIALS.map(s=>`<a data-k="${esc(s.icon)}" href="${esc(safe(s.url))}"${ext(s.url)} aria-label="${esc(s.name)}${/^https?:/i.test(s.url)?' (opens in a new tab)':''}" title="${esc(s.name)}">${icon(s.icon)}</a>`).join('');
   $('#list').innerHTML=visible(window.LINKS).map((l,i)=>{
     const cta=l.cta||'Open';
     const fresh=l.isNew||(l.added&&(Date.now()-new Date(l.added))/864e5<=(window.NEW_DAYS||14));

@@ -17,21 +17,53 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="common.css">
 <style>
-body{background:var(--bg)}
-.top{background:var(--red);position:relative;overflow:hidden;padding:4rem 1.2rem 6rem;text-align:center}
-.top::before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.28) 1.4px,transparent 1.6px) 0 0/14px 14px;opacity:.5}
-.top h1{position:relative;font-size:clamp(3.2rem,11vw,6rem);color:#0a0a0a}
-.top p{position:relative;color:#1f0604;font-weight:500;max-width:34ch;margin:.8rem auto 0}
-.wrap{width:min(900px,100% - 32px);margin:-3.5rem auto 0;position:relative}
+body{background:radial-gradient(600px 420px at 8% 0%,var(--glow),transparent 72%),radial-gradient(540px 420px at 100% 38%,var(--glow),transparent 72%),var(--bg)}
+.top{position:relative;overflow:hidden;padding:clamp(5.5rem,10vw,8rem) 1rem 5rem}
+.top::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--line) 1px,transparent 1.2px) 0 0/24px 24px;mask-image:linear-gradient(to bottom,black,transparent 88%);pointer-events:none}
+.top-inner{position:relative;width:min(1040px,100%);margin:auto}
+.intro{min-width:0}
+.hero-art{display:none}
+.eyebrow,.section-label{color:var(--red);font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.top h1{max-width:10ch;margin:.8rem 0 1.1rem;font-size:clamp(4rem,10vw,7.8rem);color:var(--text)}
+.top h1 span{color:var(--red)}
+.top .bio{color:var(--mute);font-size:1.05rem;max-width:38ch}
+.identity{display:flex;align-items:center;gap:.8rem;margin-top:1.8rem}
+.identity img{width:52px;height:52px;flex:none;border:2px solid var(--red);border-radius:50%;object-fit:cover;object-position:center;background:var(--card)}
+.identity span{display:flex;flex-direction:column;gap:.1rem;min-width:0}
+.identity strong{font-size:.9rem}
+.identity small{color:var(--mute);font-size:.82rem}
+@media(min-width:901px){
+.top{padding:5rem 1rem 4rem}
+.top-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);align-items:center;gap:clamp(2rem,5vw,5rem)}
+.hero-art{min-height:540px;position:relative;overflow:hidden;display:grid;place-items:center;padding:5rem 3.5rem 3rem;background:var(--red);border-radius:36px}
+.hero-art::before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.28) 1.4px,transparent 1.6px) 0 0/14px 14px;opacity:.5}
+.hero-photo-wrap{position:relative;z-index:1;width:min(300px,100%)}
+.hero-photo{aspect-ratio:5/6;border:8px solid #0a0a0a;border-radius:46px;background:#0a0a0a;overflow:hidden}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.hero-banner{position:absolute;z-index:2;top:1rem;left:1rem;width:min(235px,calc(100% - 2rem));padding:.8rem 1rem;border:3px solid #0a0a0a;border-radius:20px;background:#f4f1ec;color:#0a0a0a;transform:rotate(-4deg)}
+.hero-banner .m{display:block;font:700 .68rem/1.4 'Space Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}
+.hero-banner .d{display:block;margin-top:.25rem;font-size:clamp(1.8rem,3vw,2.4rem);line-height:.9;letter-spacing:.005em}
+.hero-banner .senior-label{color:var(--red);font-weight:700}
+.hero-banner .ambassador-label{color:#0078d4}
+.hero-ms-mark{display:inline-grid;grid-template-columns:repeat(2,5px);grid-template-rows:repeat(2,5px);gap:1px;margin:0 .3rem 0 .15rem;vertical-align:middle}
+.hero-ms-mark i:nth-child(1){background:#f25022}.hero-ms-mark i:nth-child(2){background:#7fba00}.hero-ms-mark i:nth-child(3){background:#00a4ef}.hero-ms-mark i:nth-child(4){background:#ffb900}
+.hero-badge{position:absolute;z-index:2;top:-3%;right:-4px;width:clamp(76px,7vw,96px);height:auto;border-radius:50%;filter:drop-shadow(0 8px 14px rgba(0,0,0,.25))}
+.hero-tags{position:absolute;z-index:2;right:.85rem;bottom:2.5rem;display:flex;flex-direction:column;gap:.55rem}
+.hero-tags span{writing-mode:vertical-rl;padding:.8rem .5rem;border-radius:99px;background:#0a0a0a;color:#fff;font:700 .62rem/1.4 'Space Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}
+}
+.wrap{width:min(1040px,100% - 32px);margin:0 auto;position:relative;padding-bottom:1rem}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}
+.section-head h2{font-size:clamp(2rem,5vw,3rem)}
+.section-count{color:var(--mute);font-size:.8rem;white-space:nowrap}
 .grid{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 .grid li{animation:up .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*90ms + 100ms)}
-.plat{--a:var(--red);--x:50%;--y:50%;display:flex;flex-direction:column;gap:.7rem;height:100%;padding:1.4rem;border:1px solid var(--line);border-radius:26px;background:var(--card);position:relative;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
-.plat::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--a);transform:scaleX(.18);transform-origin:left;transition:transform .35s}
-.plat::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(280px circle at var(--x) var(--y),color-mix(in srgb,var(--a) 26%,transparent),transparent 70%)}
-[data-k=instagram]{--a:#e1306c}[data-k=youtube]{--a:#ff2d2d}[data-k=linkedin]{--a:#2f8fe8}[data-k=github]{--a:#8b5cf6}
+.plat{--a:var(--red);--x:50%;--y:50%;display:flex;flex-direction:column;gap:1rem;height:100%;min-height:245px;padding:clamp(1.2rem,3vw,1.7rem);border:1px solid var(--line);border-radius:26px;background:var(--card);position:relative;overflow:hidden;isolation:isolate;transition:border-color .25s,transform .25s,box-shadow .25s}
+.plat::before{content:"";position:absolute;z-index:-1;left:0;top:0;width:100%;height:3px;background:var(--a);transform:scaleX(.18);transform-origin:left;transition:transform .35s}
+.plat::after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(300px circle at var(--x) var(--y),color-mix(in srgb,var(--a) 20%,transparent),transparent 72%)}
+[data-k=instagram]{--a:#e1306c}[data-k=youtube]{--a:#ff2d2d}[data-k=linkedin]{--a:#2f8fe8}[data-k=github]{--a:#8b5cf6}[data-k=facebook]{--a:#1877f2}
 @media(hover:hover){
 .plat:hover{border-color:var(--a);transform:translateY(-4px);box-shadow:0 22px 40px -26px var(--a)}
 .plat:hover::before{transform:scaleX(1)}.plat:hover::after{opacity:1}
@@ -39,29 +71,55 @@ body{background:var(--bg)}
 .plat:hover .go span{transform:translate(3px,-3px)}}
 .plat:active{transform:scale(.985)}
 .row{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
-.ic{width:60px;height:60px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--a);transition:background .25s,color .25s,border-color .25s,transform .25s}
-.ic svg{width:28px;height:28px}
+.ic{width:56px;height:56px;border-radius:18px;border:1px solid color-mix(in srgb,var(--a) 35%,var(--line));display:grid;place-items:center;color:var(--a);background:color-mix(in srgb,var(--a) 9%,var(--card));transition:background .25s,color .25s,border-color .25s,transform .25s}
+.ic svg{width:26px;height:26px}
 .hd{color:var(--mute);font-size:.82rem;overflow-wrap:anywhere;text-align:right}
-.plat h2{font-size:3.4rem}
-.plat p{color:var(--mute);font-size:.92rem;flex:1}
-.go{font-weight:600;font-size:.88rem}
+.plat h3{font-size:clamp(2.7rem,6vw,3.5rem)}
+.plat p{color:var(--mute);font-size:.92rem;flex:1;max-width:40ch}
+.go{display:flex;align-items:center;justify-content:space-between;gap:.7rem;font-weight:600;font-size:.88rem}
 .go span{color:var(--a);display:inline-block;transition:transform .25s}
+.quote-card{position:relative;isolation:isolate;overflow:hidden;margin:2rem 0 0;padding:clamp(1.5rem,4vw,2.5rem);border:1px solid color-mix(in srgb,var(--red) 35%,var(--line));border-radius:28px;background:radial-gradient(360px circle at 100% 0%,var(--glow),transparent 75%),var(--card);text-align:left}
+.quote-card::before{content:"“";position:absolute;z-index:-1;top:-2.4rem;right:1rem;color:color-mix(in srgb,var(--red) 12%,transparent);font:400 12rem/1 Georgia,serif;pointer-events:none}
+.quote-label{color:var(--red);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.quote-card blockquote{max-width:44ch;margin:.8rem 0 1rem;font-size:clamp(1.15rem,2.8vw,1.6rem);font-weight:500;line-height:1.5}
+.quote-card figcaption{display:flex;align-items:center;gap:.6rem;color:var(--mute);font-size:.78rem}
+.quote-card figcaption::before{content:"";width:24px;height:2px;background:var(--red)}
 .more{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin:2rem 0 0}
-@media(max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}.plat h2{font-size:3rem}}
+@media(max-width:640px){.top{padding-top:5.5rem}.top h1{font-size:clamp(3.5rem,13vw,5rem)}.identity{margin-top:1.2rem}.grid{grid-template-columns:minmax(0,1fr)}.plat{min-height:220px}.plat h3{font-size:3rem}}
+@media(max-width:380px){.top h1{font-size:3.4rem}}
 </style>
 </head>
 <body>
 <a class="skip" href="#grid">Skip to accounts</a>
 <button class="theme" id="theme" type="button" aria-label="Switch theme"></button>
 <header class="top">
-  <h1 class="d">Find me on social media</h1>
-  <p id="bio"></p>
+  <div class="top-inner">
+    <div class="intro">
+      <p class="eyebrow">Socials, all in one place</p>
+      <h1 class="d">Let's <span>connect.</span></h1>
+      <p class="bio" id="bio"></p>
+      <div class="identity"><img id="avatar" alt="" width="52" height="52" decoding="async"><span><strong id="name"></strong><small id="handle"></small></span></div>
+    </div>
+    <div class="hero-art" aria-label="Senior Microsoft Student Ambassador portrait">
+      <div class="hero-banner"><span class="m"><span class="senior-label">Senior</span> <span class="hero-ms-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Microsoft</span><span class="d">Student <span class="ambassador-label">Ambassador</span></span></div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo"><img src="assets/portrait-hero.webp" width="760" height="912" alt="Harish Reddy Duggempudi wearing a Microsoft Learn Student Ambassador hoodie" loading="lazy" decoding="async"></div>
+        <img class="hero-badge" src="assets/senior-ambassoder-badge.png" width="1081" height="1081" alt="Microsoft Student Ambassador Senior badge" loading="lazy" decoding="async">
+      </div>
+      <div class="hero-tags m" aria-hidden="true"><span>Developer</span><span>Content Creator</span><span>Organizer</span></div>
+    </div>
+  </div>
 </header>
 <main class="wrap">
+  <div class="section-head"><div><p class="section-label">Find me online</p><h2 class="d">Choose your platform</h2></div><span class="section-count" id="channel-count"></span></div>
   <ul class="grid" id="grid" aria-label="Social media accounts"></ul>
   <noscript><p class="noscript">Please enable JavaScript to see my accounts, or visit <a href="https://www.instagram.com/hey.harish_reddy/">Instagram</a>.</p></noscript>
+  <figure class="quote-card">
+    <p class="quote-label">A little reminder</p>
+    <blockquote>You don’t need to have it all figured out. Take the next step, share what you’re building, and keep showing up.</blockquote>
+    <figcaption>One step at a time</figcaption>
+  </figure>
   <div class="more">
-    <a class="pill" href="links.html">More links</a>
     <button class="pill" id="share" type="button">Share this page</button>
   </div>
 </main>
@@ -72,10 +130,14 @@ body{background:var(--bg)}
 <script src="common.js"></script>
 <script>
 (function(){
-  const {$,esc,icon,safe,ext}=App;
-  $('#bio').textContent=window.PROFILE.bio;
+  const {$,esc,icon,safe,ext}=App,P=window.PROFILE;
+  $('#bio').textContent=P.bio;
+  $('#name').textContent=P.name;
+  $('#handle').textContent=P.handle;
+  $('#avatar').src=P.photo;
   $('#yr').textContent=new Date().getFullYear();
-  $('#grid').innerHTML=window.SOCIALS.map((s,i)=>`<li style="--i:${i}"><a class="plat" data-k="${esc(s.icon)}" href="${esc(safe(s.url))}"${ext(s.url)} aria-label="${esc(s.name)}, ${esc(s.handle)}: ${esc(s.cta||'Visit')}${/^https?:/i.test(s.url)?' (opens in a new tab)':''}"><div class="row"><span class="ic">${icon(s.icon)}</span><span class="hd">${esc(s.handle)}</span></div><h2 class="d">${esc(s.name)}</h2><p>${esc(s.desc||'')}</p><span class="go">${esc(s.cta||'Visit')} <span aria-hidden="true">↗</span></span></a></li>`).join('');
+  $('#channel-count').textContent=window.SOCIALS.length+' platforms';
+  $('#grid').innerHTML=window.SOCIALS.map((s,i)=>`<li style="--i:${i}"><a class="plat" data-k="${esc(s.icon)}" href="${esc(safe(s.url))}"${ext(s.url)} aria-label="${esc(s.name)}, ${esc(s.handle)}: ${esc(s.cta||'Visit')}${/^https?:/i.test(s.url)?' (opens in a new tab)':''}"><div class="row"><span class="ic">${icon(s.icon)}</span><span class="hd">${esc(s.handle)}</span></div><h3 class="d">${esc(s.name)}</h3><p>${esc(s.desc||'')}</p><span class="go">${esc(s.cta||'Visit')} <span aria-hidden="true">↗</span></span></a></li>`).join('');
   App.spotlight('#grid','.plat');App.share(document.querySelector('#share'));App.theme();App.seo('socials.html');
 })();
 </script>
