@@ -97,6 +97,7 @@ body{background:radial-gradient(700px 520px at 90% 5%,var(--glow),transparent 70
 .icon svg{width:17px;height:17px;flex:none}
 .icon:hover{border-color:var(--red)}
 .btn{display:inline-flex;align-items:center;gap:.5rem;min-height:46px;padding:0 1.3rem;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);font:600 .9rem Inter,sans-serif;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s}
+.btn svg,.role svg{width:17px;height:17px;flex:none}
 .btn:hover{transform:translateY(-2px);border-color:var(--red)}
 .btn.primary{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 12px 30px -12px var(--red)}
 :focus-visible{outline:2px solid var(--red);outline-offset:3px}
@@ -116,7 +117,8 @@ body{background:radial-gradient(700px 520px at 90% 5%,var(--glow),transparent 70
 .portrait figcaption{padding:.8rem .4rem .2rem;text-align:center;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .roles{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:1.2rem;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--line)}
 .roles div{position:relative;padding:1.1rem 1.3rem 1.1rem 1.55rem;background:var(--card)}
-.roles small{display:block;color:var(--mute);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.roles small svg{width:16px;height:16px;flex:none;color:var(--red)}
+.roles small{display:flex;align-items:center;gap:.5rem;color:var(--mute);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
 .roles strong{display:block;margin-top:.2rem;font-size:.95rem;font-weight:600}
 section.s{padding:clamp(3.5rem,8vw,6rem) 0 0}
 .head{display:grid;grid-template-columns:1fr minmax(240px,.6fr);gap:1.5rem;align-items:end;margin-bottom:1.6rem}
@@ -141,7 +143,7 @@ section.s{padding:clamp(3.5rem,8vw,6rem) 0 0}
 .talk time span{font:600 .74rem/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mute)}
 .talk h3{margin:0 0 .4rem;font:400 clamp(1.8rem,2.8vw,2.6rem)/.98 'Bebas Neue',Impact,sans-serif}
 .talk p{color:var(--mute);font-size:.92rem;max-width:56ch}
-.role{padding:.45rem 1rem;border:1px solid var(--line);border-radius:999px;font:600 .72rem/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.role{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem 1rem;border:1px solid var(--line);border-radius:999px;font:600 .72rem/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 .role.sp{background:var(--red);border-color:var(--red);color:#fff}
 .topics{grid-template-columns:repeat(4,minmax(0,1fr))}
 .topic{min-height:190px;justify-content:space-between}
@@ -154,7 +156,7 @@ section.s{padding:clamp(3.5rem,8vw,6rem) 0 0}
 .contact h3{font-size:clamp(2.2rem,4vw,2.9rem);line-height:.98}
 .contact p{max-width:42ch}
 .contact .btn{margin-top:auto;align-self:flex-start}
-footer{display:flex;justify-content:space-between;gap:1rem;margin-top:4rem;padding:1.3rem 0 calc(2rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--mute);font-size:.82rem}
+footer{display:flex;justify-content:space-between;gap:1rem;margin-top:4rem;padding:1.3rem 0 calc(2rem + env(safe-area-inset-bottom,0px));border:none;color:var(--mute);font-size:.82rem}
 footer a:hover{color:var(--red)}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
@@ -171,7 +173,7 @@ footer a:hover{color:var(--red)}
   <a class="brand" href="index.html" aria-label="Hey Harish home">HEY HARISH<span>.</span></a>
   <nav aria-label="Page navigation">
     <a href="#sessions">Sessions</a><a href="#topics">Topics</a><a href="#bio">Bio</a>
-    <a class="btn primary" href="mailto:harishreddy2k05@gmail.com?subject=Speaking%20invitation" style="min-height:40px">Invite to speak ↗</a>
+    <a class="btn primary" href="mailto:harishreddy2k05@gmail.com?subject=Speaking%20invitation" style="min-height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Invite to speak <span aria-hidden="true">↗</span></a>
     <button class="icon" id="theme" type="button" aria-label="Switch theme">◐</button>
   </nav>
 </div></header>
@@ -183,8 +185,8 @@ footer a:hover{color:var(--red)}
     <h1>Harish Reddy <span>Duggempudi</span></h1>
     <p class="lede">Software developer and community builder sharing practical lessons on developer tools, AI and cloud learning, and student communities.</p>
     <div class="actions">
-      <a class="btn primary" href="mailto:harishreddy2k05@gmail.com?subject=Speaking%20invitation">Invite me to speak <span aria-hidden="true">↗</span></a>
-      <a class="btn" href="assets/portrait.jpg" download>Download headshot <span aria-hidden="true">↓</span></a>
+      <a class="btn primary" href="mailto:harishreddy2k05@gmail.com?subject=Speaking%20invitation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Invite me to speak <span aria-hidden="true">↗</span></a>
+      <a class="btn" href="assets/portrait.jpg" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M5 17v4h14v-4"/></svg>Download headshot <span aria-hidden="true">↓</span></a>
     </div>
   </div>
   <figure class="portrait">
@@ -194,19 +196,19 @@ footer a:hover{color:var(--red)}
 </section>
 
 <div class="roles reveal">
-  <div><small>Microsoft</small><strong>Senior Learn Student Ambassador</strong></div>
-  <div><small>Community</small><strong>Lead Organizer, Fabric UG Hyderabad</strong></div>
-  <div><small>Campus</small><strong>President, Innovista Hub · MRCE</strong></div>
-  <div><small>Founder</small><strong>Student Nexus</strong></div>
+  <div><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 5.5 12 2l9 3.5v6c0 5-3.8 8.5-9 10.5-5.2-2-9-5.5-9-10.5z"/><path d="m8 12 2.5 2.5L16 9"/></svg>Microsoft</small><strong>Senior Learn Student Ambassador</strong></div>
+  <div><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20v-1a5.5 5.5 0 0 1 11 0v1zM15 14a4.5 4.5 0 0 1 6.5 4v2h-6"/></svg>Community</small><strong>Lead Organizer, Fabric UG Hyderabad</strong></div>
+  <div><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M8 9h.01M12 9h.01M16 9h.01"/></svg>Campus</small><strong>President, Innovista Hub · MRCE</strong></div>
+  <div><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8z"/><path d="M5 21h14"/></svg>Founder</small><strong>Student Nexus</strong></div>
 </div>
 
 <section class="s" id="sessions">
   <div class="head reveal"><div><p class="eyebrow">On stage &amp; in the community</p><h2>Selected sessions</h2></div><p>A selection of speaking and workshop experience from developer and student communities.</p></div>
   <ol class="talks">
-    <li class="talk reveal"><time datetime="2025-11"><b>Nov</b><span>2025</span></time><div><h3>Fabric on Tour: MRCE Edition</h3><p>A Microsoft Fabric, Data and AI walkthrough for learners.</p></div><span class="role sp">Speaker</span></li>
-    <li class="talk reveal"><time datetime="2025-02"><b>Feb</b><span>2025</span></time><div><h3>Mastering the GitHub Student Pack</h3><p>A session on student access to cloud credits and developer tools.</p></div><span class="role sp">Speaker</span></li>
-    <li class="talk reveal"><time datetime="2025-02"><b>Feb</b><span>2025</span></time><div><h3>GenAI 101 with Pieces for Developers</h3><p>An introduction to AI copilots and context management.</p></div><span class="role">Host</span></li>
-    <li class="talk reveal"><time datetime="2024-11"><b>Nov</b><span>2024</span></time><div><h3>Mastering GitHub &amp; Open Source</h3><p>A practical session covering pull requests, CI, and open source.</p></div><span class="role sp">Speaker</span></li>
+    <li class="talk reveal"><time datetime="2025-11"><b>Nov</b><span>2025</span></time><div><h3>Fabric on Tour: MRCE Edition</h3><p>A Microsoft Fabric, Data and AI walkthrough for learners.</p></div><span class="role sp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></svg>Speaker</span></li>
+    <li class="talk reveal"><time datetime="2025-02"><b>Feb</b><span>2025</span></time><div><h3>Mastering the GitHub Student Pack</h3><p>A session on student access to cloud credits and developer tools.</p></div><span class="role sp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></svg>Speaker</span></li>
+    <li class="talk reveal"><time datetime="2025-02"><b>Feb</b><span>2025</span></time><div><h3>GenAI 101 with Pieces for Developers</h3><p>An introduction to AI copilots and context management.</p></div><span class="role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.75V19h8v-3.25A7 7 0 0 0 12 3Z"/><path d="M9 22h6m-5-6h4"/></svg>Host</span></li>
+    <li class="talk reveal"><time datetime="2024-11"><b>Nov</b><span>2024</span></time><div><h3>Mastering GitHub &amp; Open Source</h3><p>A practical session covering pull requests, CI, and open source.</p></div><span class="role sp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></svg>Speaker</span></li>
   </ol>
 </section>
 
@@ -224,11 +226,11 @@ footer a:hover{color:var(--red)}
   <div class="head reveal"><div><p class="eyebrow">Ready to share</p><h2>Speaker bio</h2></div><p>Use this short bio when introducing Harish at your event.</p></div>
   <div class="grid biogrid">
     <article class="card bio reveal"><p id="biotext">Harish Reddy Duggempudi is a software developer and community builder based in Hyderabad, India. He builds web products and explores AI and cloud technologies. He founded Student Nexus to help students discover developer tools, learning opportunities, and mentors, and serves as President of Innovista Hub at Malla Reddy College of Engineering. As a Senior Microsoft Learn Student Ambassador and Lead Organizer with the Microsoft Fabric User Group Hyderabad, he contributes to student and developer communities through workshops, hackathons, and technical sessions.</p>
-      <button class="btn" id="copy" type="button">Copy bio ⧉</button></article>
+      <button class="btn" id="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg><span>Copy bio</span></button></article>
     <aside class="card contact reveal">
       <p class="eyebrow">Planning an event?</p><h3>Let’s make it useful.</h3>
       <p>For speaking enquiries, include your event format, audience, date, and topic in your message.</p>
-      <a class="btn primary" href="mailto:harishreddy2k05@gmail.com?subject=Speaking%20invitation">Email a speaking enquiry ↗</a>
+      <a class="btn primary" href="mailto:harishreddy2k05@gmail.com?subject=Speaking%20invitation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email a speaking enquiry <span aria-hidden="true">↗</span></a>
     </aside>
   </div>
 </section>
@@ -239,11 +241,11 @@ footer a:hover{color:var(--red)}
     <p class="site-cta-kicker">Talks · Collaborations · Roles</p>
     <h2 id="site-cta-title">Let’s build<br>something <span>useful.</span></h2>
     <p>Need a speaker, a project partner or a developer? Let’s connect.</p>
-    <a class="site-cta-link" href="mailto:harishreddy2k05@gmail.com?subject=Talks%20and%20collaborations">Start a conversation <span aria-hidden="true">↗</span></a>
+    <a class="site-cta-link" href="mailto:harishreddy2k05@gmail.com?subject=Talks%20and%20collaborations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Start a conversation <span aria-hidden="true">↗</span></a>
   </div>
 </section>
 
-<div class="wrap"><footer class="brand-footer"><span>© <span id="yr"></span> Harish Reddy Duggempudi</span><a href="index.html">Back to portfolio ↑</a></footer></div>
+<div class="wrap"><footer class="brand-footer"><span>© <span id="yr"></span> Harish Reddy Duggempudi</span><a href="index.html">Back to portfolio <span aria-hidden="true">↑</span></a></footer></div>
 
 <script src="links-data.js"></script>
 <script src="common.js"></script>
@@ -253,7 +255,7 @@ App.theme();
 App.seo('speaker-kit.html');
 document.getElementById('copy').onclick=function(){
   var b=this,txt=document.getElementById('biotext').textContent.trim();
-  function ok(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy bio ⧉'},1800)}
+  function ok(){b.querySelector('span').textContent='Copied';b.querySelector('svg').innerHTML='<path d="m5 12 4 4L19 6"/>';setTimeout(function(){b.querySelector('span').textContent='Copy bio';b.querySelector('svg').innerHTML='<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>'},1800)}
   function fb(){var a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}a.remove()}
   if(navigator.clipboard){navigator.clipboard.writeText(txt).then(ok,fb)}else fb();
 };

@@ -87,8 +87,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="footer-brand.css">
 <style>
-:root{--bg:#0a0a0a;--panel:#121212;--card:#161616;--line:rgba(255,255,255,.14);--text:#f4f1ec;--mute:#aaa59d;--red:#f12c1c;--pill:#fff;--pilltext:#0a0a0a;--section-y:clamp(2.75rem,5vw,3.5rem);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:light){:root{--bg:#f4f1ec;--panel:#fff;--card:#fff;--line:rgba(0,0,0,.18);--text:#0a0a0a;--mute:#55504a;--pill:#0a0a0a;--pilltext:#fff;--red:#d3180a;color-scheme:light}}
+:root{--bg:#0a0a0a;--panel:#121212;--card:#161616;--line:rgba(255,255,255,.14);--text:#f4f1ec;--mute:#aaa59d;--red:#f12c1c;--glow:rgba(241,44,28,.12);--pill:#fff;--pilltext:#0a0a0a;--section-y:clamp(2.75rem,5vw,3.5rem);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root{--bg:#f4f1ec;--panel:#fff;--card:#fff;--line:rgba(0,0,0,.18);--text:#0a0a0a;--mute:#55504a;--pill:#0a0a0a;--pilltext:#fff;--red:#d3180a;--glow:rgba(211,24,10,.12);color-scheme:light}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:100px;scrollbar-width:none}
 html::-webkit-scrollbar{display:none}
@@ -234,34 +234,39 @@ a.card:hover{border-color:var(--red)}
 #galPause[aria-pressed=true]{border-color:var(--red);background:var(--card);color:var(--text)}
 #galPause:hover .gal-pause-mark,#galPause[aria-pressed=true] .gal-pause-mark{background:#c91e12}
 .gi.ph{cursor:default}
-#lb{width:min(1120px,calc(100vw - 32px));max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);margin:auto;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:#101010;color:#f4f1ec;box-shadow:0 32px 100px rgba(0,0,0,.65)}
-#lb::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(9px);animation:lb-fade .2s ease-out}
+/* ===== LIGHTBOX (fullscreen, minimal) ===== */
+#lb{width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:#f4f1ec;overflow:hidden;box-shadow:none}
+#lb::backdrop{background:rgba(6,6,6,.94);backdrop-filter:blur(20px);animation:lb-fade .25s ease-out}
 @keyframes lb-fade{from{opacity:0}to{opacity:1}}
-.lb-frame{position:relative;display:grid;grid-template-rows:minmax(0,1fr) auto;max-height:calc(100dvh - 26px)}
-.lb-stage{position:relative;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;justify-items:center;min-height:220px;max-height:calc(100dvh - 240px);padding:clamp(12px,3vw,28px);background:radial-gradient(ellipse at 50% 100%,rgba(241,44,28,.09),transparent 55%),#080808}
-.lb-stage img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100dvh - 300px);object-fit:contain;border-radius:12px}
-.lb-close,.lb-nav{display:grid;place-items:center;flex:none;border:1px solid rgba(255,255,255,.2);background:rgba(18,18,18,.84);color:#fff;cursor:pointer;backdrop-filter:blur(10px);transition:background .18s,border-color .18s,transform .18s}
-.lb-close{position:absolute;z-index:2;top:18px;right:18px;width:44px;height:44px;border-radius:50%}
-.lb-nav{width:46px;height:46px;border-radius:50%}
-.lb-nav#lbPrev{position:absolute;left:16px;top:50%;transform:translateY(-50%)}
-.lb-nav#lbNext{position:absolute;right:16px;top:50%;transform:translateY(-50%)}
-.lb-close:hover,.lb-nav:hover{background:var(--red);border-color:var(--red)}
-.lb-nav#lbPrev:hover{transform:translateY(-50%) scale(1.06)}
-.lb-nav#lbNext:hover{transform:translateY(-50%) scale(1.06)}
+@keyframes lb-pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.lb-frame{position:relative;display:block;width:100%;height:100%;max-height:none}
+.lb-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;width:auto;height:auto;max-height:none;min-height:0;padding:76px 92px 104px;background:none;overflow:hidden}
+.lb-stage img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100dvh - 180px);min-width:0;min-height:0;object-fit:contain;border:0;border-radius:14px;box-shadow:0 30px 90px rgba(0,0,0,.65);animation:lb-pop .3s ease-out}
+.lb-close,.lb-nav{display:grid;place-items:center;border:0;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;backdrop-filter:blur(10px);transition:background .2s,transform .2s}
+.lb-close{position:absolute;z-index:2;top:18px;right:18px;width:46px;height:46px;border-radius:50%}
+.lb-nav{width:52px;height:52px;border-radius:50%;box-shadow:none}
+.lb-nav#lbPrev{position:absolute;left:20px;top:50%;transform:translateY(-50%)}
+.lb-nav#lbNext{position:absolute;right:20px;top:50%;transform:translateY(-50%)}
+.lb-close:hover,.lb-nav:hover{background:var(--red)}
+.lb-nav#lbPrev:hover,.lb-nav#lbNext:hover{transform:translateY(-50%) scale(1.08)}
 .lb-close svg,.lb-nav svg{width:20px;height:20px}
-.lb-caption{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;padding:1rem clamp(1rem,3vw,1.75rem) 1.15rem;border-top:1px solid rgba(255,255,255,.1);background:linear-gradient(135deg,#151515,#101010)}
-.lb-title .m{color:#ff584b;font-size:.62rem}
-.lb-title h2{margin-top:.25rem;font-size:clamp(1.5rem,3vw,2.3rem);line-height:1}
-.lb-desc{max-width:70ch;margin-top:.4rem;color:#c4c0ba;font-size:.84rem;line-height:1.5}
-.lb-desc:empty{display:none}
-.lb-meta{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-top:.7rem;color:#e4e0da;font-size:.72rem}
-.lb-meta:empty{display:none}
-.lb-meta span{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .65rem;border:1px solid rgba(255,255,255,.12);border-radius:99px;background:rgba(255,255,255,.04)}
-.lb-meta strong{color:#ff584b;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase}
-.lb-meta svg{width:14px;height:14px;color:#ff584b;flex:none}
-.lb-count{flex:none;color:#aaa59d;font:700 .72rem/1.4 'Space Mono',ui-monospace,monospace;letter-spacing:.08em}
-@media(max-width:600px){#lb{width:calc(100vw - 16px);max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);border-radius:16px}.lb-frame{max-height:calc(100dvh - 18px)}.lb-stage{min-height:180px;max-height:calc(100dvh - 230px);padding:6px}.lb-stage img{max-width:calc(100vw - 28px);max-height:calc(100dvh - 270px);border-radius:10px}.lb-close,.lb-nav{width:40px;height:40px}.lb-close{top:12px;right:12px}.lb-nav#lbPrev{left:10px}.lb-nav#lbNext{right:10px}.lb-caption{align-items:flex-start;padding:.75rem .85rem .85rem}.lb-desc{font-size:.78rem}.lb-meta{gap:.4rem}.lb-meta span{padding:.35rem .55rem}.lb-count{padding-top:.2rem}}
-@media(prefers-reduced-motion:reduce){#lb::backdrop{animation:none}.lb-close,.lb-nav{transition:none}}
+.lb-caption{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;align-items:center;gap:1rem;max-width:min(90vw,640px);padding:.7rem 1.2rem;border:1px solid rgba(255,255,255,.12);border-radius:99px;background:rgba(20,20,20,.7);backdrop-filter:blur(14px)}
+.lb-title .m{display:none}
+.lb-title h2{margin:0;font-size:1.3rem;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-desc{display:none}
+.lb-meta{display:none}
+.lb-count{flex:none;padding-left:1rem;border-left:1px solid rgba(255,255,255,.2);color:#aaa59d;font:700 .72rem/1 'Space Mono',monospace;letter-spacing:.08em}
+@media(max-width:600px){
+  .lb-stage{padding:60px 10px 100px}
+  .lb-stage img{max-height:calc(100dvh - 170px);border-radius:10px}
+  .lb-nav{width:42px;height:42px;top:auto;bottom:24px;transform:none}
+  .lb-nav#lbPrev{left:14px;top:auto;transform:none}
+  .lb-nav#lbNext{right:14px;top:auto;transform:none}
+  .lb-nav#lbPrev:hover,.lb-nav#lbNext:hover{transform:none}
+  .lb-caption{bottom:30px;max-width:calc(100vw - 130px);padding:.55rem .9rem}
+  .lb-title h2{font-size:1.05rem}
+}
+@media(prefers-reduced-motion:reduce){#lb::backdrop,.lb-stage img{animation:none}.lb-close,.lb-nav{transition:none}}
 .sk{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
 .sk div{border:1px solid var(--line);border-radius:30px;padding:1.8rem;background:var(--card)}
 .sk h3{font-size:2.3rem;margin-bottom:1rem}
@@ -373,6 +378,24 @@ footer a:hover{color:var(--red)}
 .partners .partner{border:1px solid var(--line);border-radius:22px;background:var(--card);min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;font-size:1.1rem;text-align:center;padding:1rem}
 .partner img,.partner-mark{width:40px;height:40px;object-fit:contain}
 .partner-mark{display:grid;place-items:center;border-radius:12px;background:var(--red);color:#0a0a0a;font:700 .95rem/1 'Space Mono',ui-monospace,monospace;letter-spacing:-.06em}
+@media(prefers-color-scheme:dark){.partner-logo-mono{filter:invert(1);mix-blend-mode:screen}}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:1rem;width:min(100%,920px);margin-inline:0}
+.testimonial-panel{position:relative;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;gap:.55rem;width:100%;min-height:100%;padding:1.3rem;border:1px solid var(--line);border-radius:22px;background:radial-gradient(360px circle at 0% 0%,var(--glow),transparent 70%),var(--panel);box-shadow:0 18px 48px rgba(0,0,0,.12)}
+.testimonial-topline{display:flex;align-items:center;justify-content:flex-start;gap:.7rem}
+.testimonial-copy>.testimonial-topline{justify-content:space-between}
+.testimonial-mark{color:var(--red);font:400 3.2rem/.7 Georgia,serif}
+.testimonial-rating{display:flex;align-items:center;gap:.45rem;color:#f2b66d;font-size:.85rem}
+.testimonial-rating span{color:var(--mute);font:700 .65rem/1.3 'Space Mono',monospace}
+.testimonial-badge{padding:.3rem .55rem;border:1px solid color-mix(in srgb,var(--red) 42%,var(--line));border-radius:99px;color:var(--red);font:700 .58rem/1.2 'Space Mono',monospace;letter-spacing:.08em}
+.testimonial-copy>.m{color:var(--red)}
+.testimonial-quote{max-width:42ch;margin:.2rem 0 .7rem;font-size:clamp(1.15rem,1.8vw,1.4rem);font-weight:500;line-height:1.4}
+.testimonial-attribution{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.testimonial-author{display:flex;flex-direction:column;gap:.15rem}
+.testimonial-author strong{font-size:.95rem}
+.testimonial-author span{color:var(--mute);font-size:.75rem}
+.testimonial-link{color:var(--red);font-size:.82rem;font-weight:600}
+.testimonial-link:hover{color:var(--text)}
+@media(max-width:600px){.testimonial-panel{gap:.5rem;padding:1.1rem;border-radius:20px}.testimonial-mark{font-size:2.8rem}.testimonial-quote{font-size:1.15rem}}
 .tc.k{background:var(--red);color:#0a0a0a;border:0;align-items:center;justify-content:center;font-size:4rem}
 .track .proj,.track .proj.big{--proj-accent:var(--red);position:relative;isolation:isolate;flex:none;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(1rem,2.4vw,2rem);width:min(740px,78vw);height:clamp(350px,calc(100vh - 23rem),490px);padding:clamp(.7rem,1.4vw,1rem);scroll-snap-align:start;border:1px solid color-mix(in srgb,var(--proj-accent) 34%,rgba(255,255,255,.18));border-radius:34px;background:radial-gradient(ellipse at 90% 0%,color-mix(in srgb,var(--proj-accent) 18%,transparent),transparent 42%),linear-gradient(145deg,#191a1d,#0b0b0d 75%);color:#f4f1ec;box-shadow:0 28px 80px rgba(0,0,0,.2);transition:border-color .3s,box-shadow .3s}
 .track .proj:nth-child(5n+2){--proj-accent:#5ad4c5}
@@ -594,7 +617,11 @@ footer{justify-content:center;text-align:center;border-radius:30px}.dist{grid-te
 #rvStatus{position:static;width:auto;height:auto;clip:auto;overflow:visible;text-align:center;margin-top:.7rem;color:var(--mute);font:700 .72rem/1.4 'Space Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
 
 .blogs{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),340px));justify-content:start}
-.blogs .bc{aspect-ratio:2.4/1;height:auto}
+.blogs .bc{position:relative;aspect-ratio:2.4/1;height:auto}
+.blogs .blog-art{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:1rem 1.15rem;background:radial-gradient(ellipse at 85% 15%,rgba(73,126,245,.42),transparent 42%),linear-gradient(135deg,#111827,#111116 70%);color:#f4f1ec}
+.blogs .blog-art span{font:700 .58rem/1.3 'Space Mono',monospace;letter-spacing:.12em;color:#aebaff}
+.blogs .blog-art strong{font:400 clamp(1.7rem,3vw,2.5rem)/.88 'Bebas Neue',Impact,sans-serif;letter-spacing:.02em}
+.blogs .blog-art i{align-self:flex-end;color:#aebaff;font:700 .55rem/1.2 'Space Mono',monospace;letter-spacing:.1em;font-style:normal}
 .blogs .card{transition:transform .3s,border-color .3s,box-shadow .3s}
 .blogs .card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -26px rgba(241,44,28,.45)}
 .blogs .cb{padding:1rem;gap:.4rem}
@@ -652,7 +679,7 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 <header><nav aria-label="Main">
 <a href="#home" class="logo d" aria-label="Harish Reddy Duggempudi, home">HRD<span class="red">.</span></a>
 <ul class="m" id="menu">
-<li class="nav-compact"><a href="#about">About</a></li><li class="nav-compact"><a href="#projects">Projects</a></li><li class="nav-compact"><a href="#journey">Journey</a></li><li class="nav-compact"><a href="#events">Speaking</a></li><li class="nav-secondary"><a href="speaker-kit.html">Speaker Kit</a></li><li class="nav-secondary"><a href="#blogs">Articles</a></li><li class="nav-compact"><a href="#videos">Videos</a></li>
+<li class="nav-compact"><a href="#about">About</a></li><li class="nav-compact"><a href="#projects">Projects</a></li><li class="nav-compact"><a href="#journey">Journey</a></li><li class="nav-compact"><a href="#events">Speaking</a></li><li class="nav-secondary"><a href="#testimonials">Testimonials</a></li><li class="nav-secondary"><a href="speaker-kit.html">Speaker Kit</a></li><li class="nav-secondary"><a href="#blogs">Articles</a></li><li class="nav-compact"><a href="#videos">Videos</a></li>
 </ul>
 <div class="nr">
 <a class="pill" href="#open-to-work">Hire Me</a>
@@ -672,7 +699,7 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 </div>
 <div class="acts">
 <a class="pill r" href="#projects">View Projects</a>
-<a class="pill o" id="resumeBtn" href="#contact" aria-disabled="true">Download Resume</a>
+<a class="pill o" id="resumeBtn" href="assets/Harish_Reddy_Duggempudi_Resume.pdf" download>Download Resume</a>
 <a class="pill o" href="#open-to-work">Hire Me</a>
 </div>
 <div class="icons" id="socials"></div>
@@ -765,8 +792,8 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 <p class="m">Communities &amp; programs</p><h2 class="d" id="partners-title">Communities &amp; Partners<span class="red">.</span></h2>
 <div class="partners d">
  <div class="partner"><img src="assets/partners/microsoft.webp" width="40" height="40" alt=""><span>Microsoft</span></div>
- <div class="partner"><img src="assets/partners/github.webp" width="40" height="40" alt=""><span>GitHub</span></div>
- <div class="partner"><img src="assets/partners/pieces.webp" width="40" height="40" alt=""><span>Pieces for Developers</span></div>
+ <div class="partner"><img class="partner-logo-mono" src="assets/partners/github.webp" width="40" height="40" alt=""><span>GitHub</span></div>
+ <div class="partner"><img class="partner-logo-mono" src="assets/partners/pieces.webp" width="40" height="40" alt=""><span>Pieces for Developers</span></div>
  <div class="partner"><img src="assets/partners/azure-developer-community.webp" width="40" height="40" alt=""><span>Azure Developer Community</span></div>
  <div class="partner"><img src="assets/partners/reskilll.webp" width="40" height="40" alt=""><span>Reskilll</span></div>
  <div class="partner"><span class="partner-mark" aria-hidden="true">MR</span><span>MRCE</span></div>
@@ -823,19 +850,54 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 </div>
 </section>
 
-<section id="gallery" aria-labelledby="gallery-title"><div class="w">
-<p class="m">Beyond the code</p><h2 class="d" id="gallery-title">Life outside the screen<span class="red">.</span></h2>
-<p class="gctl"><button type="button" class="rb" id="galPause" aria-pressed="false" aria-controls="galList"><span class="gal-pause-mark" aria-hidden="true"><svg class="gal-pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg><svg class="gal-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg></span><span class="gal-pause-label">Pause scrolling</span></button></p>
-</div><div class="gal" id="galList" role="group" aria-label="Photo gallery"></div></section>
+<section id="testimonials" aria-labelledby="testimonials-title"><div class="w">
+<p class="m">Testimonials</p><h2 class="d" id="testimonials-title">Kind words<span class="red">.</span></h2>
+<div class="testimonial-grid">
+<article class="testimonial-panel">
+<div class="testimonial-topline">
+<span class="testimonial-mark" aria-hidden="true">“</span>
+<span class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★ <span>5/5</span></span>
+</div>
+<div class="testimonial-copy">
+<div class="testimonial-topline"><p class="m">Topmate review</p><span class="testimonial-badge">PINNED</span></div>
+<blockquote class="testimonial-quote">The call was friendly, insightful, and informative, helping me gain clarity on my doubts and better understand the steps required to progress toward the Associate role in the MSA program.</blockquote>
+<div class="testimonial-attribution">
+<div class="testimonial-author"><strong>Akshaya Manukonda</strong><span><time datetime="2026-10-11">11th Oct, 2026</time> · Topmate</span></div>
+<a class="testimonial-link" href="https://topmate.io/harish_reddy_duggempudi" target="_blank" rel="noopener noreferrer">View Topmate profile <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</article>
+<article class="testimonial-panel">
+<div class="testimonial-topline">
+<span class="testimonial-mark" aria-hidden="true">“</span>
+<span class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★ <span>5/5</span></span>
+</div>
+<div class="testimonial-copy">
+<div class="testimonial-topline"><p class="m">Topmate review</p></div>
+<blockquote class="testimonial-quote">the guide has explained clearly and all the doubts are clarified</blockquote>
+<div class="testimonial-attribution">
+<div class="testimonial-author"><strong>Smruthik Reddy</strong><span><time datetime="2026-10-19">19th Oct, 2026</time> · Topmate</span></div>
+<a class="testimonial-link" href="https://topmate.io/harish_reddy_duggempudi" target="_blank" rel="noopener noreferrer">View Topmate profile <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div></section>
 
 <section class="opportunities" id="open-to-work" aria-labelledby="open-work-title"><div class="w opportunities-panel">
 <div class="opportunities-intro"><p class="m">Open to opportunities</p><h2 class="d" id="open-work-title">Open to work<span class="red">.</span></h2><p>Interested in software development, frontend, and AI roles. Let’s build useful things together.</p></div>
 <article class="open-work-card" aria-label="Open to work profile">
 <div class="open-work-profile"><div class="open-work-photo"><img src="assets/portrait-hero.webp" alt="Harish Reddy Duggempudi" width="760" height="912" loading="eager" decoding="async"></div><div class="open-work-copy"><span class="open-work-label">OPEN TO WORK</span><h3>Harish Reddy Duggempudi</h3><p>Hyderabad, India</p></div></div>
 <ul class="open-work-roles" aria-label="Interested roles"><li>Software Developer</li><li>Frontend Developer</li><li>AI Developer</li></ul>
-<div class="open-work-actions"><a class="pill" href="assets/Harish_Reddy_Duggempudi_Resume_.pdf" download>Download Resume <span aria-hidden="true">↓</span></a><a class="pill linkedin" href="https://www.linkedin.com/in/harish-reddy-duggempudi/" target="_blank" rel="noopener noreferrer"><svg class="linkedin-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
+<div class="open-work-actions"><a class="pill" href="assets/Harish_Reddy_Duggempudi_Resume.pdf" download>Download Resume <span aria-hidden="true">↓</span></a><a class="pill linkedin" href="https://www.linkedin.com/in/harish-reddy-duggempudi/" target="_blank" rel="noopener noreferrer"><svg class="linkedin-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
 </article>
 </div></section>
+
+<section id="gallery" aria-labelledby="gallery-title"><div class="w">
+<p class="m">Beyond the code</p><h2 class="d" id="gallery-title">Life outside the screen<span class="red">.</span></h2>
+<p class="gctl"><button type="button" class="rb" id="galPause" aria-pressed="false" aria-controls="galList"><span class="gal-pause-mark" aria-hidden="true"><svg class="gal-pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg><svg class="gal-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg></span><span class="gal-pause-label">Pause scrolling</span></button></p>
+</div><div class="gal" id="galList" role="group" aria-label="Photo gallery"></div></section>
 
 <section id="contact" aria-labelledby="contact-title"><div class="cta"><div class="w">
 <div class="cta-copy">
@@ -849,9 +911,9 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 <p class="m">Talks · Collaborations · Roles</p>
 <h2 class="d" id="connect-h">Have something in mind?<span class="red">.</span></h2>
 <p>Need a speaker, a project partner or a developer? Send a short note and I’ll reply.</p>
-<a class="pill" href="mailto:harishreddy2k05@gmail.com?subject=Hello%20Harish" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Start a conversation <span aria-hidden="true">↗</span></a>
+<a class="pill" href="mailto:harishreddy2k05@gmail.com?subject=Hello%20Harish"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Start a conversation <span aria-hidden="true">↗</span></a>
 <div class="connect-details">
-<div class="connect-contact"><span class="m">Or email me directly</span><a class="mail" href="mailto:harishreddy2k05@gmail.com" target="_blank" rel="noopener noreferrer">harishreddy2k05@gmail.com</a></div>
+<div class="connect-contact"><span class="m">Or email me directly</span><a class="mail" href="mailto:harishreddy2k05@gmail.com">harishreddy2k05@gmail.com</a></div>
 <div class="connect-social"><span class="m">Find me around the web</span><div class="icons" id="contactSocials" aria-label="Social media profiles"></div></div>
 </div>
 </div>
@@ -870,10 +932,10 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 <ul id="footSocials" class="icons" style="list-style:none" aria-label="Social links"></ul>
 </div>
 <nav aria-labelledby="sf-work"><h2 class="m sf-h" id="sf-work">Work with me</h2><ul class="sf-links">
-<li><a href="#open-to-work">Open to work</a></li><li><a href="#mentoring">Mentoring</a></li><li><a href="mailto:harishreddy2k05@gmail.com">Email me</a></li><li><a href="links.html" target="_blank" rel="noopener noreferrer">All Links ↗</a></li><li><a href="socials.html" target="_blank" rel="noopener noreferrer">My Social ↗</a></li>
+<li><a href="#open-to-work">Open to work</a></li><li><a href="#mentoring">Mentoring</a></li><li><a href="speaker-kit.html">Speaker kit</a></li><li><a href="mailto:harishreddy2k05@gmail.com">Email me</a></li><li><a href="links.html" target="_blank" rel="noopener noreferrer">All Links ↗</a></li><li><a href="socials.html" target="_blank" rel="noopener noreferrer">My Social ↗</a></li>
 </ul></nav>
 <nav aria-labelledby="sf-explore"><h2 class="m sf-h" id="sf-explore">Explore</h2><ul class="sf-links">
-<li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#journey">Journey</a></li><li><a href="#events">Speaking &amp; events</a></li><li><a href="#videos">Videos</a></li><li><a href="#blogs">Articles</a></li><li><a href="speaker-kit.html">Speaker kit</a></li>
+<li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#journey">Journey</a></li><li><a href="#events">Speaking &amp; events</a></li><li><a href="#testimonials">Testimonials</a></li>
 </ul></nav>
 <div><h2 class="m sf-h">Based in</h2><p class="sf-city d">Hyderabad, India</p><p class="sf-time">Harish time <time id="hydTime">--:--</time> IST</p><p class="sf-time">Your local time <time id="visitorTime">--:--</time></p></div>
 </div>
@@ -900,8 +962,7 @@ footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 <script>
 /* ===== CONTENT DATA (edit here) ===== */
 const SITE={
-  // Set available:true after adding assets/Harish-Reddy-Duggempudi-Resume.pdf
-  resume:{file:'assets/Harish_Reddy_Duggempudi_Resume_.pdf',available:true},
+  resume:{file:'assets/Harish_Reddy_Duggempudi_Resume.pdf',available:true},
   // Unconfirmed attendance numbers stay hidden until you set this to true after verifying them.
   showUnconfirmedNumbers:false,
   social:[
@@ -946,6 +1007,10 @@ const VIDEOS=[
 // Add only real published articles: {url,title,excerpt,date,tag,cover,alt}
 // cover: a local path (assets/blog/<name>.webp). Shown at 16:9, cropped to fit.
 const BLOGS=[
+ {url:'https://www.linkedin.com/pulse/azure-ai-foundry-revolutionizing-development-harish-reddy-duggempudi-bcc4c',
+  title:'Azure AI Foundry: Revolutionizing Development',
+  excerpt:'An overview of Azure AI Foundry and how its model catalog, customization tools, integrations, and deployment capabilities support AI development.',
+  tag:'Azure AI · LinkedIn',coverLabel:'Azure AI Foundry'},
  {url:'https://heyharishreddy.blogspot.com/2026/10/how-to-join-microsoft-student.html',
   title:'How to Join Microsoft Student Ambassadors',
   excerpt:'Step-by-step guide to apply for the Microsoft Student Ambassadors (MSA) program: eligibility, 8 application steps with screenshots, and tips.',
@@ -953,11 +1018,28 @@ const BLOGS=[
   cover:'assets/blog/how-to-join-microsoft-student-ambassadors.webp',
   alt:'Cover graphic for the article How to Join Microsoft Student Ambassadors'}
 ];
-// Temporary gallery artwork is shown only until real photos replace it; keep the gallery to ten items.
+// Real event and community photos for the gallery.
 const GALLERY=[
- {src:'assets/gallery/01.webp',alt:'Harish Reddy Duggempudi wearing a Microsoft Learn Student Ambassador hoodie',cap:'Portrait',width:800,height:600},
- ...Array.from({length:9},(_,i)=>{const n=i+2,id=String(n).padStart(2,'0');return{src:`assets/gallery/${id}.${n<=6?'webp':'svg'}`,alt:`Temporary gallery artwork ${id}; replace with a real event photo`,cap:`Temporary gallery artwork ${id}`,width:800,height:600}})
-].slice(0,10);
+ {src:'assets/gallery/campus-event-team.jpg',alt:'Harish with fellow organizers at a campus event',cap:'Campus event team',width:1280,height:590},
+ {src:'assets/gallery/campus-event-organizers.jpg',alt:'Student organizers and faculty gathered at Malla Reddy College of Engineering',cap:'Campus event organizers',width:1280,height:590},
+ {src:'assets/gallery/azuredev-day-team.jpg',alt:'Organizers and guests at AzureDev Day',cap:'AzureDev Day',width:1280,height:590},
+ {src:'assets/gallery/campus-event-speakers.jpg',alt:'Speakers and organizers at a college event',cap:'Event speakers and organizers',width:1280,height:719},
+ {src:'assets/gallery/student-ambassador-certificate.jpg',alt:'Harish receiving a Microsoft Student Ambassador certificate',cap:'Student Ambassador certificate',width:1280,height:960},
+ {src:'assets/gallery/virtual-tech-session.jpg',alt:'Harish speaking to attendees during an online developer session',cap:'Online developer session',width:1280,height:755},
+ {src:'assets/gallery/student-community-workshop.jpg',alt:'Harish talking with students and mentors at a workshop',cap:'Student community workshop',width:800,height:1066},
+ {src:'assets/gallery/lead-coordinator-at-workshop.jpg',alt:'Harish leading a workshop as student lead coordinator',cap:'Workshop lead coordinator',width:800,height:1067},
+ {src:'assets/gallery/student-ambassador-speaking.jpg',alt:'Harish speaking at a student event',cap:'Speaking at a student event',width:800,height:1067},
+ {src:'assets/gallery/speaking-to-event-audience.jpg',alt:'Harish addressing an audience at a developer event',cap:'Speaking to the audience',width:1280,height:853},
+ {src:'assets/gallery/online-developer-session.jpg',alt:'Harish and attendees on a virtual developer session',cap:'Virtual developer session',width:1280,height:853},
+ {src:'assets/gallery/speaking-at-campus-event.jpg',alt:'Harish speaking into a microphone at a campus event',cap:'Speaking at a campus event',width:800,height:1067},
+ {src:'assets/gallery/campus-tech-talk-audience.jpg',alt:'Students attending a campus technology talk',cap:'Campus tech talk',width:1280,height:577},
+ {src:'assets/gallery/microsoft-student-ambassador-session.jpg',alt:'Harish presenting a Microsoft Student Ambassador session',cap:'Microsoft Student Ambassador session',width:800,height:1067},
+ {src:'assets/gallery/fabric-on-tour-team.jpg',alt:'Harish and the team at Fabric on Tour MRCE',cap:'Fabric on Tour team',width:800,height:1067},
+ {src:'assets/gallery/online-community-session.jpg',alt:'Harish speaking with participants in an online community session',cap:'Online community session',width:1280,height:758},
+ {src:'assets/gallery/microsoft-fabric-community.jpg',alt:'Harish introducing the Microsoft Fabric User Group Hyderabad',cap:'Microsoft Fabric community',width:800,height:1067},
+ {src:'assets/gallery/student-ambassador-workshop.jpg',alt:'Students attending a Microsoft Student Ambassador workshop',cap:'Student Ambassador workshop',width:1280,height:960},
+ {src:'assets/gallery/student-ambassador-program-session.jpg',alt:'Harish explaining the Microsoft Student Ambassador program',cap:'Student Ambassador program session',width:1280,height:960}
+];
 // att = attendance, hidden unless showUnconfirmedNumbers is true.
 const EVENTS=[
  {date:'2026',name:'GitHub Copilot Dev Days Hyderabad',sum:'Organizer. Held at Microsoft Office Hyderabad.',att:'250+ attendees',url:'https://www.linkedin.com/feed/update/urn:li:activity:7513581985169051648'},
@@ -1015,7 +1097,7 @@ $('#yr').textContent=new Date().getFullYear();
 $('#projectList').innerHTML=PROJECTS.map((p,index)=>{
   const links=(p.live?`<a href="${p.live}" ${ext}>Live Demo<span class="visually-hidden"> of ${esc(p.name)}</span></a>`:'')+(p.repo?`<a href="${p.repo}" ${ext}>GitHub</a>`:'');
   const stack=p.stack.split(',').map(tech=>`<span>${esc(tech.trim())}</span>`).join('');
-  return `<article class="proj${p.featured?' big':''}" data-project="${String(index+1).padStart(2,'0')}"><div class="shot">${img('assets/projects/'+p.slug+'.webp','Temporary placeholder artwork for '+p.name+'; not a product screenshot','width="1280" height="800"')}<span class="proj-placeholder" aria-hidden="true">Concept artwork · not a screenshot</span></div>
+  return `<article class="proj${p.featured?' big':''}" data-project="${String(index+1).padStart(2,'0')}"><div class="shot">${img('assets/projects/'+p.slug+'.webp',p.realShot?p.name+' screenshot':'Temporary placeholder artwork for '+p.name+'; not a product screenshot','width="1280" height="800"')}${p.realShot?'':'<span class="proj-placeholder" aria-hidden="true">Concept artwork · not a screenshot</span>'}</div>
   <div class="pb"><p class="proj-kicker m"><span>PROJECT ${String(index+1).padStart(2,'0')}</span><span>${p.featured?'FEATURED':'SELECTED BUILD'}</span></p><h3 class="d">${esc(p.name)}</h3><p>${esc(p.desc)}</p>
   ${p.problem?`<p><b>Problem:</b> ${esc(p.problem)}</p>`:''}${p.role?`<p><b>My role:</b> ${esc(p.role)}</p>`:''}
   <div class="proj-stack" aria-label="Technology stack">${stack}</div>${links?`<div class="pl">${links}</div>`:''}</div></article>`;
@@ -1301,7 +1383,7 @@ ${item.ytUrl||item.igUrl?`<div class="rv-platforms">${item.ytUrl?`<a class="rv-p
   }else{visible=true;syncInstagramPreviews();playCurrent()}
 })();
 
-$('#blogList').innerHTML=BLOGS.length?BLOGS.map(b=>`<a class="card" href="${b.url}" ${ext}><div class="bc">${b.cover?`<img src="${esc(b.cover)}" alt="${esc(b.alt||'Cover image for '+b.title)}" width="1113" height="322" loading="lazy" decoding="async" data-blogcover>`:''}</div><div class="cb"><p class="m">${esc([b.tag,b.date].filter(Boolean).join(' · '))}</p><h3 class="d">${esc(b.title)}</h3><p>${esc(b.excerpt)}</p><span class="m red">Read Article <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab): ${esc(b.title)}</span></span></div></a>`).join('')
+$('#blogList').innerHTML=BLOGS.length?BLOGS.map(b=>`<a class="card" href="${b.url}" ${ext}><div class="bc">${b.cover?`<img src="${esc(b.cover)}" alt="${esc(b.alt||'Cover image for '+b.title)}" width="1113" height="322" loading="lazy" decoding="async" data-blogcover>`:`<div class="blog-art" aria-hidden="true"><span>FEATURED ARTICLE</span><strong>${esc(b.coverLabel||b.title)}</strong><i>AI · CLOUD · DEVELOPMENT</i></div>`}</div><div class="cb"><p class="m">${esc([b.tag,b.date].filter(Boolean).join(' · '))}</p><h3 class="d">${esc(b.title)}</h3><p>${esc(b.excerpt)}</p><span class="m red">Read Article <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab): ${esc(b.title)}</span></span></div></a>`).join('')
  :`<div class="card"><div class="cb"><p class="m red">No articles yet</p><h3 class="d">Add your first article</h3><p>Add a published article to the BLOGS list: url, title, excerpt, date, tag and a cover image.</p></div></div>`;
 
 (function(){
@@ -1315,15 +1397,14 @@ $('#blogList').innerHTML=BLOGS.length?BLOGS.map(b=>`<a class="card" href="${b.ur
     pb.closest('.gctl').hidden=true;
     return;
   }
-  // Row 1 = photos 1,3,5..., row 2 = photos 2,4,6...; each set repeats to cover very wide screens, then doubles for a seamless loop.
-  const rows=n>1?[GALLERY.map((_,i)=>i).filter(i=>i%2===0),GALLERY.map((_,i)=>i).filter(i=>i%2===1)]:[[0]];
-  g.innerHTML=rows.map((ix,r)=>{
-    const reps=Math.max(1,Math.ceil(2600/(ix.length*214)));
+  // Split photos across two horizontal strips to keep the gallery compact.
+  const rows=[GALLERY.map((_,i)=>i).filter(i=>i%2===0),GALLERY.map((_,i)=>i).filter(i=>i%2===1)];
+  g.innerHTML=rows.map((indices,row)=>{
+    const reps=Math.max(1,Math.ceil(2600/(indices.length*214)));
     let set='',copy='';
-    for(let k=0;k<reps;k++)ix.forEach(i=>{set+=cell(i,k>0)});
-    for(let k=0;k<reps;k++)ix.forEach(i=>{copy+=cell(i,true)});
-    // Row 1 moves left to right, row 2 moves right to left.
-    return `<div class="grow ${r===0?'ltr':'rtl'}"><div class="gtrack">${set}${copy}</div></div>`;
+    for(let k=0;k<reps;k++)indices.forEach(i=>{set+=cell(i,k>0)});
+    for(let k=0;k<reps;k++)indices.forEach(i=>{copy+=cell(i,true)});
+    return `<div class="grow ${row===0?'ltr':'rtl'}"><div class="gtrack">${set}${copy}</div></div>`;
   }).join('');
   pb.addEventListener('click',()=>{const on=pb.getAttribute('aria-pressed')!=='true';pb.setAttribute('aria-pressed',on);pb.querySelector('.gal-pause-label').textContent=on?'Resume scrolling':'Pause scrolling';g.classList.toggle('paused',on)});
 })();
@@ -1356,7 +1437,7 @@ $('#galList').addEventListener('click',e=>{
 $('#lbClose').addEventListener('click',()=>lb.close());
 $('#lbPrev').addEventListener('click',()=>showGalleryPhoto(galleryIndex-1));
 $('#lbNext').addEventListener('click',()=>showGalleryPhoto(galleryIndex+1));
-lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('lb-frame')||e.target.classList.contains('lb-stage'))lb.close()});
 lb.addEventListener('close',()=>galleryOpener?.focus());
 lb.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft'){e.preventDefault();showGalleryPhoto(galleryIndex-1)}
