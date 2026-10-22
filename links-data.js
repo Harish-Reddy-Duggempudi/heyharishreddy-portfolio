@@ -1,6 +1,6 @@
 /* ===== LINKS DATA: edit ONLY this file =====
    New link: add at the TOP of LINKS.  New social account: add to SOCIALS.  Both pages update automatically.
-   icon:      linkedin | github | instagram | youtube | facebook | topmate | mail | globe | article | link
+   icon:      linkedin | github | instagram | youtube | facebook | whatsapp | topmate | mail | globe | article | link
    featured:  true -> big red button (use for 1-2 links)
    isNew:     true -> pulsing "New" badge (stays until you remove it)
    added:     'YYYY-MM-DD' -> "New" badge shows automatically for NEW_DAYS days, then disappears by itself
@@ -8,7 +8,7 @@
    hidden:    true -> keeps the link in the file but hides it from the page
    Photo and og-image paths are relative to the site root. */
 window.SITE = {
-  url: 'https://heyharishreddy.in/',            // CHANGE to your real domain (used for canonical, share cards, SEO)
+  url: 'https://heyharishreddy.in/',            // Canonical site URL used for SEO and sharing
   ogImage: 'assets/og-image.jpg'
 };
 
@@ -17,7 +17,7 @@ window.NEW_DAYS = 14;
 window.PROFILE = {
   name: 'Harish Reddy Duggempudi',
   handle: '@hey.harish_reddy',
-  bio: 'Developer · Community builder · Content creator from Hyderabad',
+  bio: 'Software developer, AI and cloud enthusiast, community builder, and content creator in Hyderabad, India. I build web products and help students grow through developer communities.',
   photo: 'assets/portrait-hero.webp'
 };
 
@@ -26,7 +26,8 @@ window.SOCIALS = [
   { name: 'Instagram', handle: '@hey.harish_reddy', url: 'https://www.instagram.com/hey.harish_reddy/', icon: 'instagram', desc: 'Short tech content, creator updates and moments from my journey.', cta: 'Follow on Instagram' },
   { name: 'LinkedIn', handle: 'Harish Reddy Duggempudi', url: 'https://www.linkedin.com/in/harish-reddy-duggempudi/', icon: 'linkedin', desc: 'Professional updates, events and opportunities.', cta: 'Connect on LinkedIn' },
   { name: 'Facebook', handle: 'Harish Reddy Duggempudi', url: 'https://www.facebook.com/profile.php?id=61595168235205', icon: 'facebook', desc: 'Follow me on Facebook for updates and things I share.', cta: 'Follow on Facebook' },
-  { name: 'GitHub', handle: 'Harish-Reddy-Duggempudi', url: 'https://github.com/Harish-Reddy-Duggempudi', icon: 'github', desc: 'Code, projects and open source work.', cta: 'View on GitHub' }
+  { name: 'GitHub', handle: 'Harish-Reddy-Duggempudi', url: 'https://github.com/Harish-Reddy-Duggempudi', icon: 'github', desc: 'Code, projects and open source work.', cta: 'View on GitHub' },
+  { name: 'WhatsApp Channel', handle: 'Updates and announcements', url: 'https://whatsapp.com/channel/0029VbDn5c98F2pA9wcoLq40', icon: 'whatsapp', desc: 'Follow my WhatsApp Channel for updates and announcements.', cta: 'Follow on WhatsApp' }
   // Add: { name:'Telegram', handle:'@you', url:'https://...', icon:'link', desc:'...', cta:'Join on Telegram' }
 ];
 
@@ -38,6 +39,7 @@ window.LINKS = [
 ];
 
 window.LINK_ICONS = {
+  whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.6 5.96L.06 24l6.28-1.65a11.9 11.9 0 0 0 5.72 1.46h.01c6.56 0 11.9-5.34 11.91-11.91a11.84 11.84 0 0 0-3.46-8.42ZM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98.99-3.64-.24-.37a9.86 9.86 0 0 1-1.52-5.27c0-5.47 4.45-9.92 9.92-9.92a9.85 9.85 0 0 1 7.02 2.91 9.85 9.85 0 0 1 2.9 7.03c0 5.47-4.45 9.92-9.93 9.92Zm5.44-7.43c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.8-1.49-1.78-1.67-2.08-.18-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.38-.28.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35Z"/></svg>',
   linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>',
   facebook: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.025 4.388 11.021 10.125 11.927v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.696 4.533-4.696 1.312 0 2.686.236 2.686.236v2.976h-1.513c-1.491 0-1.956.931-1.956 1.886v2.261h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.098 24 12.073z"/></svg>',
   github: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>',

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#0a0a0a"/>
+  <rect x="32" y="32" width="736" height="536" rx="24" fill="none" stroke="#f12c1c" stroke-opacity=".55"/>
+  <path d="M66 66h668" stroke="#f12c1c" stroke-width="4"/>
+  <text x="66" y="100" fill="#aaa59d" font-family="monospace" font-size="14" letter-spacing="2">TEMPORARY IMAGE / REPLACE WITH YOUR OWN</text>
+  <circle cx="650" cy="430" r="185" fill="none" stroke="#f12c1c" stroke-opacity=".2" stroke-width="10"/>
+  <circle cx="650" cy="430" r="135" fill="none" stroke="#f12c1c" stroke-opacity=".16" stroke-width="8"/>
+  <text x="66" y="310" fill="#f4f1ec" font-family="Arial, sans-serif" font-size="46" font-weight="700">GALLERY PHOTO 09</text>
+  <text x="66" y="520" fill="#aaa59d" font-family="Arial, sans-serif" font-size="13">PLACEHOLDER ARTWORK · ADD A REAL PHOTO</text>
+</svg>

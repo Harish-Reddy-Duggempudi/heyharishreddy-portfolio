@@ -3,9 +3,8 @@
   const $=s=>document.querySelector(s);
   const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const icon=k=>window.LINK_ICONS[k]||window.LINK_ICONS.link;
-  const isExt=u=>/^https?:/i.test(u);
   const safe=u=>/^(https?:|mailto:|tel:|\.\/|\/|#|[\w-]+\.html)/i.test(u)?u:'#'; // blocks javascript: urls
-  const ext=u=>isExt(u)?' target="_blank" rel="noopener noreferrer"':'';
+  const ext=u=>String(u||'').startsWith('#')?'':' target="_blank" rel="noopener noreferrer"';
   const absUrl=p=>{try{return new URL(p,window.SITE.url).href}catch(e){return p}};
 
   function toast(t){const e=$('#toast');if(!e)return;e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2400)}
@@ -39,7 +38,7 @@
     const moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
     const sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
     const cur=()=>root.dataset.theme||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');
-    const paint=()=>{if(!btn)return;const t=cur();btn.innerHTML=t==='dark'?sun:moon;btn.setAttribute('aria-label','Switch to '+(t==='dark'?'light':'dark')+' theme');
+    const paint=()=>{if(!btn)return;const t=cur(),next=t==='dark'?'light':'dark';btn.innerHTML=(t==='dark'?sun:moon)+'<span>'+next[0].toUpperCase()+next.slice(1)+'</span>';btn.setAttribute('aria-label','Switch to '+next+' theme');
       const m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='dark'?'#0a0a0a':'#f4f1ec'};
     try{const s=localStorage.getItem('theme');if(s)root.dataset.theme=s}catch(e){}
     paint();
@@ -52,9 +51,6 @@
     if(c)c.href=url;if(o)o.content=url;
     const img=absUrl(window.SITE.ogImage||P.photo);
     document.head.querySelectorAll('meta[property="og:image"],meta[name="twitter:image"]').forEach(m=>m.content=img);
-    const ld=document.createElement('script');ld.type='application/ld+json';
-    ld.textContent=JSON.stringify({'@context':'https://schema.org','@type':'Person',name:P.name,url:absUrl('./'),image:absUrl(P.photo),description:P.bio,sameAs:window.SOCIALS.map(s=>s.url)});
-    document.head.appendChild(ld);
   }
 
   window.App={$,esc,icon,safe,ext,toast,spotlight,share,theme,seo,visible:a=>a.filter(x=>!x.hidden)};

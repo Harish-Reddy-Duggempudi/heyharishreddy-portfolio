@@ -1,8 +1,9 @@
 # Harish Reddy Duggempudi — Portfolio
 
-A responsive, single-page portfolio built with HTML, CSS, and vanilla
-JavaScript. It presents projects, skills, leadership and events, creator
-platforms, videos, writing, mentoring, and contact information.
+A responsive portfolio built with HTML, CSS, and vanilla JavaScript. The main
+portfolio is a single page, with separate links and social-profile pages. It
+presents projects, skills, milestones, speaking, creator platforms, videos,
+writing, mentoring, and contact information.
 
 ## Preview locally
 
@@ -16,59 +17,46 @@ required.
 - Keep the gallery and project placeholder artwork clearly identified until
   replacing it with real photos and screenshots. The hero portrait, article
   cover, Topmate artwork, and social-sharing graphic are not placeholders.
+- The gallery shows the supplied portrait and clearly labeled temporary
+  artwork (up to ten items) in two opposite-scrolling rows; replace each
+  placeholder with a real photo before presenting it as event photography.
+  Project artwork is explicitly labeled as concept art.
 - Update each image's alt text to describe the replacement image. Leave `alt=""`
   on decorative logos and icons.
 - The resume button is intentionally inactive until a real resume PDF is added
   and `SITE.resume.available` is changed to `true`.
 - Unverified event attendance figures remain hidden by
   `SITE.showUnconfirmedNumbers:false`.
+- The speaker kit uses existing event details and the supplied portrait. Add
+  only approved, authentic testimonial quotes and confirmed video titles.
 
 See [ASSETS.md](ASSETS.md) for the image inventory and owner confirmations
 still needed.
 
 ## GitHub Pages deployment
 
-GitHub Pages project-site hosting is intended, but the repository name and
-final public URL have not been confirmed. Do not publish or share an assumed
-URL. Once the actual owner and repository are known:
+The canonical public URL is `https://heyharishreddy.in/`. The HTML pages
+include canonical links, search and social-sharing metadata, and structured
+data for the site owner and each page. `sitemap.xml` lists the public pages,
+`robots.txt` points crawlers to the sitemap, and `404.html` provides the static
+host's not-found page.
 
 1. In that repository, select **Settings → Pages → Deploy from a branch** and
    choose the publishing branch and `/(root)`.
-2. Confirm the deployed URL in the Pages settings. For a project site it is
-   generally `https://<OWNER>.github.io/<REPOSITORY>/`; preserve the exact
-   repository spelling and trailing slash. A custom domain should be used only
-   after ownership, DNS, and GitHub Pages configuration are confirmed.
-3. Replace `<SITE_URL>` below with that confirmed HTTPS URL, including its
-   trailing slash, and make the following edits in `index.html`:
-   - Add `<link rel="canonical" href="<SITE_URL>">`.
-   - Add `og:url` with `<SITE_URL>`.
-   - Set `og:image` and `twitter:image` to
-     `<SITE_URL>assets/og-image.jpg`. These social image URLs must be absolute.
-   - Keep the existing title, descriptions, image alt text, and Person JSON-LD
-     factual. Add the canonical URL to JSON-LD only after it is confirmed.
-4. Create `sitemap.xml` in the published root with the confirmed `<SITE_URL>`
-   in its `<loc>` entry. Then add
-   `Sitemap: <SITE_URL>sitemap.xml` to the root `robots.txt`. Do not publish a
-   sitemap containing an example or unverified hostname.
-5. Verify that the deployed page, favicon, stylesheet-in-page, local assets,
-   social image, canonical URL, and sitemap all resolve at the project-site
-   base path.
-
-Until step 2 is complete, the page intentionally has no canonical or `og:url`,
-and the social image metadata is a relative local path. `robots.txt` permits
-crawling but does not name a sitemap. No sitemap or `404.html` is included
-while the final project-site base path is unknown; GitHub Pages can serve a
-custom 404 page if one is later added with the confirmed base path.
+2. Configure `heyharishreddy.in` as the custom domain in GitHub Pages and
+   verify its DNS records and HTTPS availability before launch. Do not replace
+   the canonical domain with the temporary `github.io` address.
+3. Verify that the deployed pages, canonical URLs, social image, and
+   `https://heyharishreddy.in/sitemap.xml` resolve correctly.
 
 ## Search Console checklist
 
-After the site is publicly accessible, verify the exact deployed property in
-Google Search Console (DNS verification for an owned domain, or an available
-HTML/file verification method for the Pages URL). Inspect the deployed home
-page, check its canonical and robots accessibility, then submit
-`<SITE_URL>sitemap.xml` after the sitemap has been created with the final URL.
-Check Search Console for crawl or sitemap errors. Submission is a request to
-crawl, not a guarantee of indexing or ranking.
+After the site is publicly accessible, verify the `heyharishreddy.in` property
+in Google Search Console. Inspect the deployed pages, check their canonical
+URLs and robots accessibility, then submit
+`https://heyharishreddy.in/sitemap.xml`. Check Search Console for crawl or
+sitemap errors. Submission is a request to crawl, not a guarantee of indexing
+or ranking.
 
 ## Static hosting and caching
 
@@ -80,15 +68,21 @@ No analytics, tracking scripts, or cookie banner are included.
 
 ## Owner verification before release
 
-- Confirm the exact GitHub Pages URL or verified custom domain.
+- Confirm the custom domain, DNS, and HTTPS are configured for GitHub Pages.
 - Confirm the visible contact email and LinkedIn, GitHub, Instagram, and YouTube
   handles/URLs in `SITE` and `PLATFORMS`.
 - Review the dated leadership and event entries, titles, roles, event recap
   link, and published article URL/date for accuracy. Attendance figures remain
   hidden unless individually verified.
-- Replace project and gallery placeholder artwork with actual screenshots and
-  photos, or remove those entries. Confirm live project links still represent
-  active projects.
+- Replace project concept artwork with genuine screenshots before presenting
+  it as product imagery; gallery placeholders are not displayed.
+- Provide accurate titles for the eight reels whose source entries have no
+  title. The page uses descriptive platform/profile fallbacks rather than
+  inventing video content.
+- The resume PDF is not present, so its download remains disabled. Add an
+  approved resume before enabling it.
+- Add testimonials only after receiving authentic quotes and permission to
+  publish them.
 
 ## Security and privacy
 

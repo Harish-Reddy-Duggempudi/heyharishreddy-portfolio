@@ -1,0 +1,13 @@
+.site-cta{position:relative;isolation:isolate;overflow:hidden;width:auto;min-height:360px;margin:3rem 12px 1rem;padding:clamp(1.5rem,4vw,3rem) 0;display:flex;align-items:center;border:1px solid rgba(241,44,28,.45);border-radius:34px;background:#0a0a0a;color:#f4f1ec}
+.site-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.82),rgba(10,10,10,.64) 52%,rgba(10,10,10,.26)),url(assets/contact-bg.webp) center 46%/cover no-repeat}
+.site-cta-copy{position:relative;max-width:680px}
+.site-cta-kicker{display:flex;align-items:center;gap:.7rem;margin:0;color:rgba(244,241,236,.76);font:700 .72rem/1.4 'Space Mono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase}
+.site-cta-kicker::before{content:"";width:26px;height:2px;background:#f12c1c}
+.site-cta h2{margin:1.1rem 0 1rem;font:400 clamp(3.5rem,7.5vw,7rem)/.84 'Bebas Neue',Impact,sans-serif;letter-spacing:-.015em;text-transform:uppercase}
+.site-cta h2 span{color:#f12c1c}
+.site-cta-copy>p:not(.site-cta-kicker){max-width:32em;margin:0;color:rgba(244,241,236,.78);font-size:.98rem}
+.site-cta-link{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:44px;margin-top:1.2rem;padding:.65rem 1.1rem;border:1px solid #f12c1c;border-radius:99px;background:#f12c1c;color:#fff;font:600 .88rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
+.site-cta-link:hover{transform:translateY(-2px);border-color:#d92113;background:#d92113}
+.site-cta-link:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:900px){.site-cta{min-height:320px;padding:2.2rem 0}.site-cta::before{background-image:linear-gradient(180deg,rgba(10,10,10,.68),rgba(10,10,10,.48) 50%,rgba(10,10,10,.3)),url(assets/contact-bg.webp)}.site-cta-copy{max-width:600px}}
+@media(max-width:600px){.site-cta{min-height:300px;margin:2rem 8px 1rem;padding:1.8rem 0;border-radius:24px}.site-cta::before{background-position:60% 44%}.site-cta h2{font-size:clamp(3.1rem,14vw,4.6rem);overflow-wrap:anywhere}.site-cta-copy>p:not(.site-cta-kicker){font-size:.9rem}}
